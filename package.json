@@ -2,10 +2,10 @@
   "name": "svelte-anime",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "svelte-kit dev --host",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
+    "preview": "svelte-kit preview --host",
     "prepare": "svelte-kit sync",
     "test": "playwright test",
     "check": "svelte-check --tsconfig ./tsconfig.json",
