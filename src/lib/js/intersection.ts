@@ -1,14 +1,19 @@
-import type { callback } from '../../types/intersection.type'
+import type {
+  callback, intersectParam
+} from '../../types/intersection.type'
 /**
  * Intercepts an element and can addis a callback listener when that element is visible
  * @param callback
  * @param observerOptions
  */
-export function intersect(callback: callback, { attachListener, observerOptions }) {
+// export function intersect(callback: callback, {attachListener: attachListener, observerOptions: observerOptions}) {
+export function intersect(
+  callback: callback,
+  { attachListener, observerOptions }: intersectParam
+): IntersectionObserver {
+
   let element = attachListener?.element;
   let name = attachListener?.name;
-  // callback = attachListener?.callback;
-
 
   let observer = new IntersectionObserver((entries, observer) => {
     let isIntersecting = entries[0].isIntersecting;

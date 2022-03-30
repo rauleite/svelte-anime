@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { intersect } from '$lib/js/intersection';
 	// import { existsListener } from '$lib/js/health';
 	export let freckles = { fill: '#f39283' };
@@ -11,8 +11,8 @@
 	export let contour = { fill: '#fbb99fff' };
 	export let ear = { fill: contour.fill };
 
-	let eyeBlink = false;
-	let eyeElem;
+	let eyeBlink: boolean = false;
+	let eyeElem: SVGRectElement;
 
 	// afterUpdate(() => {
 	// 	existsListener(document, 'visibilitychange');
@@ -21,11 +21,14 @@
 	onMount(async () => {
 		console.log('onMount');
 
-		let tabChanges = (event) => {
+		// let tabChanges = (event: Event) => {
+		let tabChanges = () => {
 			console.log('tab show', !document.hidden);
 		};
+
 		let observer = intersect(
-			(isIntersecting, { entries, observer }) => {
+			// (isIntersecting, { entries, observer }) => {
+			(isIntersecting) => {
 				if (isIntersecting) {
 					return (eyeBlink = true);
 				}
@@ -54,7 +57,7 @@
 		};
 	});
 
-	let toStyle = (style) =>
+	let toStyle = (style: { fill: string }) =>
 		Object.entries(style)
 			.map(([param, value]) => `${param}:${value};`)
 			.join('');
@@ -209,10 +212,10 @@
 			opacity: var(--blink-key-opacity-2);
 		}
 	}
-	.eyeBlink .eyeBlink--infinite {
-		animation-delay: 5s;
-		animation-iteration-count: infinite;
-	}
+	/* .eyeBlink .eyeBlink--infinite { */
+	/* 	animation-delay: 5s; */
+	/* 	animation-iteration-count: infinite; */
+	/* } */
 	/* .animaEyebrow { */
 	/* } */
 </style>
