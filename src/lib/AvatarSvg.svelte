@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { intersect } from '$lib/js/intersection';
+	import { intersect } from '../utils/intersection';
 	// import { existsListener } from '$lib/js/health';
 	export let freckles = { fill: '#f39283' };
 	export let eyebrow = { fill: '#644358d8' };
@@ -40,13 +40,13 @@
 					//each 70% of element visible
 					// default is 0 (very moment that the element appears)
 					// 1 = only if element is full visible
-					threshold: 0.7
+					threshold: 0.7,
 				},
 				attachListener: {
 					element: document,
 					name: 'visibilitychange',
-					callback: tabChanges
-				}
+					callback: tabChanges,
+				},
 			}
 		);
 
@@ -70,7 +70,7 @@
 		hair: toStyle(hair),
 		hairFringe: toStyle(hairFringe),
 		contour: toStyle(contour),
-		ear: toStyle(ear)
+		ear: toStyle(ear),
 	};
 
 	// 	let observer = new IntersectionObserver(
@@ -104,7 +104,12 @@
 </script>
 
 <div style="height: 1200px;" />
-<svg viewBox="0 0 41.845 61.4" height="232.062" width="158.154" xmlns="http://www.w3.org/2000/svg">
+<svg
+	viewBox="0 0 41.845 61.4"
+	height="232.062"
+	width="158.154"
+	xmlns="http://www.w3.org/2000/svg"
+>
 	<g>
 		<path
 			style={face.hair}

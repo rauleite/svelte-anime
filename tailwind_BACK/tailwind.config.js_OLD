@@ -1,0 +1,32 @@
+// const generateColorClass = (variable: string) => {
+var generateColorClass = function (variable) {
+	return function (_a) {
+		var opacityValue = _a.opacityValue;
+		return opacityValue
+			? 'rgba(var(--'.concat(variable, '), ').concat(opacityValue, ')')
+			: 'rgb(var(--'.concat(variable, '))');
+	};
+};
+var textColor = {
+	primary: generateColorClass('text-primary'),
+	secondary: generateColorClass('text-secondary'),
+	tertiary: generateColorClass('text-tertiary'),
+};
+var backgroundColor = {
+	primary: generateColorClass('bg-primary'),
+	secondary: generateColorClass('bg-secondary'),
+	tertiary: generateColorClass('bg-tertiary'),
+};
+module.exports = {
+	content: ['./src/**/*.{html,js,ts,css,svelte}'],
+	darkMode: 'class',
+	theme: {
+		extend: {
+			textColor: textColor,
+			backgroundColor: backgroundColor,
+		},
+	},
+	plugins: [
+		// require('@tailwindcss/typography'),
+	],
+};

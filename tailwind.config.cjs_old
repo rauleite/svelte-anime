@@ -1,0 +1,135 @@
+// const { typescript } = require('svelte-preprocess');
+
+// const hexToRGBA = require('./tests/utils/css').hexToRGBA;
+// const round = require('./src/utils/numbers').round;
+
+// const hexToRGBA = require('./tests/utils/css/hexToRGBA');
+// const round = require('./src/utils/numbers/round');
+
+// const a = eval(
+// 	require('typescript').transpile(
+// 		require('fs').readFileSync('./tests/utils/numbers.ts').toString()
+// 	)
+// );
+// const runCode = (strCode) => {
+// 	return Function('"use strict";return (' + strCode + ')')();
+// };
+
+// const strNumbers = require('typescript').transpile(
+// 	require('fs').readFileSync('./tests/utils/numbers.ts').toString(),
+// 	{ esModuleInterop: true }
+// );
+// const strCss = require('typescript').transpile(
+// 	require('fs').readFileSync('./tests/utils/css.ts').toString()
+// );
+
+// console.log(strNumbers);
+// console.log(strCss);
+// console.log(eval(strNumbers));
+// console.log(eval(strCss));
+
+// console.log(require('typescript').transpileModule('./tests/utils/css.ts'));
+// console.log(require('./tests/utils/numbers.cjs'));
+const path = require('path');
+const { transpile } = require('typescript');
+const { readFileSync } = require('fs');
+console.log('path', path.resolve('./tests/utils/css.ts', '..'));
+
+const strModule = (strRequire) =>
+	transpile(readFileSync(strRequire).toString(), { noResolve: true });
+
+// const evalModule = (strModule) => eval(strModule)
+// let strModuleTest = `
+// abc
+// var a = require("./tests/utils/css");
+// def
+// var b = require("./tests/utils/numbers");
+// ghi
+// `;
+
+const PATTERN = /= require\(\"(\..*)\"\)/gm;
+
+const factorial = (strModuleTest) => {
+	let match = PATTERN.exec(strModuleTest);
+	console.log('match', match);
+	if (match !== null) {
+		console.log('--- ! null ---');
+		match[1] = `${match[1]}.ts`;
+		console.log('match["1"]', match[1]);
+		const strModuleMatch = strModule(match[1]);
+		console.log('strModuleMatch', strModuleMatch);
+		return strModuleMatch;
+	}
+	console.log('---  null ---');
+	match[1] = `${match[1]}.ts`;
+	console.log('match["1"]', match[1]);
+	const strModuleMatch = strModule(match[1]);
+	console.log('strModuleMatch', strModuleMatch);
+	// strModuleTest = strModuleTest.replace(match[0], `= ${strModule(match[1])}`);
+	console.log('strModuleTest', strModuleTest);
+	// return factorial('');
+	return factorial(strModuleTest);
+};
+
+const strModuleTest = strModule('./tests/utils/css.ts');
+// console.log('strModuleTest', strModuleTest);
+console.log('factorial', factorial(strModuleTest));
+
+// do {
+// 	match[1] = `${match[1]}.ts`;
+// 	console.log(match[1]);
+// 	strModuleTest = strModuleTest.replace(
+// 		match[0],
+// 		`= ${eval(strModule(match[1]))}`
+// 	);
+// 	console.log(strModuleTest);
+// 	strModuleTest;
+// } while ((match = PATTERN.exec(strModuleTest)) !== null);
+
+const generateColorClass = (variable) => {
+	// const generateColorClass = (variable) => {
+	return ({ opacityValue }) =>
+		opacityValue
+			? `rgba(var(--${variable}), ${opacityValue})`
+			: `rgb(var(--${variable}))`;
+};
+
+const textColor = {
+	primary: generateColorClass('text-primary'),
+	secondary: generateColorClass('text-secondary'),
+	tertiary: generateColorClass('text-tertiary'),
+};
+
+const backgroundColor = {
+	primary: generateColorClass('bg-primary'),
+	secondary: generateColorClass('bg-secondary'),
+	tertiary: generateColorClass('bg-tertiary'),
+	// tertiary: round(10),
+};
+
+module.exports = {
+	content: ['./src/**/*.{html,js,ts,css,svelte}'],
+	darkMode: 'class',
+	theme: {
+		extend: {
+			textColor,
+			backgroundColor,
+			// colors: {
+			//   "primary": "#38bdf8",
+			//   "secondary": "#818CF8",
+			//   "accent": "#F471B5",
+			//   "accent": "#1E293B",
+			//   "neutral": "#273449",
+			//   "base-100": "#0F172A",
+			//   "info": "#0CA5E9",
+			//   "success": "#2DD4BF",
+			//   "warning": "#F4BF50",
+			//   "error": "#FB7085",
+			//   // "base-content":
+			// }
+		},
+	},
+	plugins: [
+		// require('@tailwindcss/typography'),
+	],
+};

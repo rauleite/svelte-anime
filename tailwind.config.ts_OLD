@@ -1,9 +1,11 @@
-const path = require('path');
-// const configPath = './config';
-// const { round } = require(path.resolve(configPath, './src/utils/numbers'));
-const { round } = require('./config/src/utils/numbers.cjs');
+import { hexToRGBA } from './tests/utils/css';
+import { round } from './src/utils/numbers';
 
-const generateColorClass = (variable) => {
+// import css = module( './tests/utils/css');
+// import numbers = module( './tests/utils/numbers');
+// const hexToRGBA = css.hexToRGBA
+// const getRandomInt = numbers.getRandomInt
+const generateColorClass = (variable: string) => {
 	// const generateColorClass = (variable) => {
 	return ({ opacityValue }) =>
 		opacityValue
@@ -20,8 +22,8 @@ const textColor = {
 const backgroundColor = {
 	primary: generateColorClass('bg-primary'),
 	secondary: generateColorClass('bg-secondary'),
-	tertiary: generateColorClass('bg-tertiary'),
-	// tertiary: round(10),
+	// tertiary: generateColorClass('bg-tertiary'),
+	tertiary: round(10),
 };
 
 module.exports = {

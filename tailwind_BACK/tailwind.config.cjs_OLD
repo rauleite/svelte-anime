@@ -1,10 +1,6 @@
-const path = require('path');
-// const configPath = './config';
-// const { round } = require(path.resolve(configPath, './src/utils/numbers'));
-const { round } = require('./config/src/utils/numbers.cjs');
-
+// import { hexToRGBA } from './src/utils/css';
+// const css = require('./src/utils/css.ts');
 const generateColorClass = (variable) => {
-	// const generateColorClass = (variable) => {
 	return ({ opacityValue }) =>
 		opacityValue
 			? `rgba(var(--${variable}), ${opacityValue})`
@@ -21,11 +17,10 @@ const backgroundColor = {
 	primary: generateColorClass('bg-primary'),
 	secondary: generateColorClass('bg-secondary'),
 	tertiary: generateColorClass('bg-tertiary'),
-	// tertiary: round(10),
 };
 
 module.exports = {
-	content: ['./src/**/*.{html,js,ts,css,svelte}'],
+	content: ['./src/**/*.{html,css,svelte}'],
 	darkMode: 'class',
 	theme: {
 		extend: {
