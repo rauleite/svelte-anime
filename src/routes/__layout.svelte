@@ -7,6 +7,10 @@
 
 <svelte:head>
 	<script lang="ts">
+		/**
+		 *  This part must be disposed here, to be on top (head) of all pages
+		 *  and so avoid the flickering theme on reload
+		 */
 		enum themes {
 			NIGHT = 'night',
 			LIGHT = 'light',
@@ -37,10 +41,11 @@
 </svelte:head>
 
 <!-- duration-500 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent" -->
-<div
-	class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors 
-  duration-500 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
->
+<!-- <div -->
+<!-- 	class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors  -->
+<!--   duration-500 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent" -->
+<!-- > -->
+<div>
 	<div class="relative flex items-center">
 		<a href="/">
 			<Logo />

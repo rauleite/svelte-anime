@@ -1,4 +1,4 @@
-import { round } from '../../src/utils/numbers';
+import { round } from './numbers.cjs';
 
 const isValidHex = (hex: string): boolean =>
 	/^#([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
@@ -9,7 +9,7 @@ const getChunksFromString = (st: string, chunkSize: number): RegExpMatchArray =>
 const convertHexUnitTo256 = (hexStr: string): number =>
 	parseInt(hexStr.repeat(2 / hexStr.length), 16);
 
-const getAlphafloat = (a: number, alpha: number): number => {
+export const getAlphafloat = (a: number, alpha: number): number => {
 	if (typeof a !== 'undefined') {
 		return a / 255;
 	}

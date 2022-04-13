@@ -1,8 +1,14 @@
 import LogoComp from '../src/lib/Logo.svelte';
 
-import { getRandomInt } from './utils/numbers';
+// import { getRandomInt } from './utils/numbers.cjs';
 
 import { describe, expect, test } from 'vitest';
+
+const getRandomInt = (min, max) => {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 const Logo = (props: {}) => {
 	const host = document.createElement('div');

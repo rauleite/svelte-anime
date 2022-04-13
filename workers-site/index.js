@@ -2660,7 +2660,7 @@ ${rendered.css.code}`;
     assets: /* @__PURE__ */ new Set(["favicon.png"]),
     mimeTypes: { ".png": "image/png" },
     _: {
-      entry: { "file": "start-581e5314.js", "js": ["start-581e5314.js", "chunks/index-e7b8a758.js"], "css": [] },
+      entry: { "file": "start-bcd6854a.js", "js": ["start-bcd6854a.js", "chunks/index-e7b8a758.js"], "css": [] },
       nodes: [
         () => Promise.resolve().then(() => (init__(), __exports)),
         () => Promise.resolve().then(() => (init__2(), __exports2)),

@@ -1,14 +1,12 @@
-const path = require('path');
-// const configPath = './config';
-// const { round } = require(path.resolve(configPath, './src/utils/numbers'));
-const { round } = require('./config/src/utils/numbers.cjs');
+// const { round } = require('./config/src/utils/numbers.cjs');
+const { getAlphafloat } = require('./config/css.cjs');
 
 const generateColorClass = (variable) => {
-	// const generateColorClass = (variable) => {
-	return ({ opacityValue }) =>
-		opacityValue
+	return ({ opacityValue }) => {
+		return opacityValue
 			? `rgba(var(--${variable}), ${opacityValue})`
 			: `rgb(var(--${variable}))`;
+	};
 };
 
 const textColor = {

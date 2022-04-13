@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { round } from '../src/utils/numbers';
+import { round } from '../src/utils/numbers.cjs';
 
 describe('round number', () => {
 	const n1 = 0.4;
