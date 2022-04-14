@@ -1,0 +1,22 @@
+@import 'theme';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+	}
+	[data-theme='light'] {
+		$bg-primary: #ffff00;
+		@include theme($bg-primary);
+	}
+	[data-theme='coffee'] {
+		$bg-primary: #ff00ff;
+		@include theme($bg-primary);
+	}
+	[data-theme='night'] {
+		$bg-primary: #0000ff;
+		@include theme($bg-primary);
+	}
+}

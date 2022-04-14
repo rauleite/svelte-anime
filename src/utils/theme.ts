@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 
-const onBrowser = (callback, serverMock: string[]) => {
+const onBrowser = (callback: () => void, serverMock: string[]) => {
 	if (!browser) {
 		let functionMock = serverMock.reduce((obj, item) => {
 			return { ...obj, [item]: () => undefined };

@@ -1,8 +1,6 @@
 <script lang="ts">
-	import '../app.css';
-	import Logo from '../lib/Logo.svelte';
-	// import theme from '$lib/store/theme';
-	// theme.setTheme('night');
+	// import '../app.css';
+	import Logo from '$lib/Logo.svelte';
 </script>
 
 <svelte:head>
@@ -40,11 +38,6 @@
 	</script>
 </svelte:head>
 
-<!-- duration-500 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent" -->
-<!-- <div -->
-<!-- 	class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors  -->
-<!--   duration-500 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent" -->
-<!-- > -->
 <div>
 	<div class="relative flex items-center">
 		<a href="/">
@@ -52,7 +45,9 @@
 		</a>
 	</div>
 </div>
-<!-- div test  -->
-<!-- <div class="supports-backdrop-blur " /> -->
-<!-- <div class="backdrop-blur " /> -->
 <slot />
+
+<!-- <style type="text/scss" global> -->
+<style lang="scss" global>
+	@import '../../static/css/app';
+</style>

@@ -1,6 +1,3 @@
-// const { round } = require('./config/src/utils/numbers.cjs');
-const { getAlphafloat } = require('./config/css.cjs');
-
 const generateColorClass = (variable) => {
 	return ({ opacityValue }) => {
 		return opacityValue
@@ -19,17 +16,16 @@ const backgroundColor = {
 	primary: generateColorClass('bg-primary'),
 	secondary: generateColorClass('bg-secondary'),
 	tertiary: generateColorClass('bg-tertiary'),
-	// tertiary: round(10),
 };
 
 module.exports = {
-	content: ['./src/**/*.{html,js,ts,css,svelte}'],
+	content: ['./src/**/*.{html,js,ts,scss,css,svelte}'],
 	darkMode: 'class',
 	theme: {
 		extend: {
 			textColor,
 			backgroundColor,
-			// colors: {
+			// colrs: {
 			//   "primary": "#38bdf8",
 			//   "secondary": "#818CF8",
 			//   "accent": "#F471B5",

@@ -1,11 +1,11 @@
 <script>
 	// import SvgIcon from '$lib/AvatarSvg.svelte';
 	import SvgAvatar from '$lib/Avatar2Svg.svelte';
-	let faceStyle = {
-		// mouth: { fill: '#00f' },
-		// hair: { fill: '#f00' },
-		// contour: { fill: '#0f0' }
-	};
+	// let faceStyle = {
+	// mouth: { fill: '#00f' },
+	// hair: { fill: '#f00' },
+	// contour: { fill: '#0f0' }
+	// };
 </script>
 
 <h1 class="text-lg dark:text-slate-400">Text Lg</h1>

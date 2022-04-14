@@ -1,0 +1,6 @@
+@function rgb-format($color) {
+	@return unquote('#{red($color)}, #{green($color)}, #{blue($color)}');
+}
+@mixin theme($bg-primary) {
+	--bg-primary: #{rgb-format($bg-primary)};
+}
