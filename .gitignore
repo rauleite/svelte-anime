@@ -2,9 +2,11 @@
 node_modules
 /build
 /.svelte-kit
+/.cloudflare
 /package
 .env
 .env.*
 !.env.example
 /models
 /coverage
+
