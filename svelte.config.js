@@ -3,7 +3,8 @@ import adapter from '@sveltejs/adapter-cloudflare-workers';
 import preprocess from 'svelte-preprocess';
 
 import { VitePWA } from 'vite-plugin-pwa';
-import { pwaConfiguration } from './pwa-configuration.js'
+import replace from '@rollup/plugin-replace'
+import { pwaConfiguration, replaceOptions } from './pwa-configuration.js'
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   // Consult https://github.com/sveltejs/svelte-preprocess
@@ -12,8 +13,14 @@ const config = {
 
   kit: {
     adapter: adapter(),
+    prerender: {
+      default: true
+    },
     vite: {
-      plugins: [VitePWA(pwaConfiguration)],
+      plugins: [
+        VitePWA(pwaConfiguration),
+        replace(replaceOptions)
+      ],
       resolve: {
         alias: {
           // $lib: path.resolve("./src/lib"),
